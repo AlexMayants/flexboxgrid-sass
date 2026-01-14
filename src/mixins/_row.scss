@@ -1,23 +1,25 @@
+@use "bem";
+
 // Will make a single grid row.
 @mixin make-row($breakpoint) {
   .row {
-    @include variant($breakpoint + '-no-gutters') {
+    @include bem.variant($breakpoint + '-no-gutters') {
       margin: 0;
     }
 
-    @include variant($breakpoint + '-top') {
+    @include bem.variant($breakpoint + '-top') {
       align-items: flex-start;
     }
 
-    @include variant($breakpoint + '-center') {
+    @include bem.variant($breakpoint + '-center') {
       align-items: center;
     }
 
-    @include variant($breakpoint + '-bottom') {
+    @include bem.variant($breakpoint + '-bottom') {
       align-items: flex-end;
     }
 
-    @include variant($breakpoint + '-reverse') {
+    @include bem.variant($breakpoint + '-reverse') {
       flex-direction: row-reverse;
     }
   }

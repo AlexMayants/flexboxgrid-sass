@@ -1,6 +1,11 @@
+@use "../mixins/bem";
+@use "../mixins/row";
+@use "../settings/variables";
+
 @use "sass:math";
 
-@import '../bootstrap.scss';
+@use "sass:map";
+@use '../bootstrap.scss';
 
 .row {
   box-sizing: border-box;
@@ -9,32 +14,32 @@
   flex-direction: row;
   flex-wrap: wrap;
   list-style: none;
-  margin: (-(map_get($gutter, 'height'))) (-(math.div(map_get($gutter, 'width'), 2))) (map_get($gutter, 'height'));
+  margin: (-(map.get(variables.$gutter, 'height'))) (-(math.div(map.get(variables.$gutter, 'width'), 2))) (map.get(variables.$gutter, 'height'));
   padding: 0;
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  @include variant('no-gutters') {
+  @include bem.variant('no-gutters') {
     margin: 0;
   }
 
-  @include variant('top') {
+  @include bem.variant('top') {
     align-items: flex-start;
   }
 
-  @include variant('center') {
+  @include bem.variant('center') {
     align-items: center;
   }
 
-  @include variant('bottom') {
+  @include bem.variant('bottom') {
     align-items: flex-end;
   }
 
-  @include variant('reverse') {
+  @include bem.variant('reverse') {
     flex-direction: row-reverse;
   }
 }
 
-@include make-rows($breakpoints);
+@include row.make-rows(variables.$breakpoints);

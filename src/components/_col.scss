@@ -1,45 +1,49 @@
 @use "sass:math";
 
-@import '../bootstrap.scss';
+@use "sass:map";
+@use '../bootstrap.scss';
+@use "../mixins/bem";
+@use "../mixins/col";
+@use "../settings/variables";
 
 .col {
   box-sizing: border-box;
   flex: 0 0 100%;
   flex-direction: column;
   max-width: 100%;
-  padding: map_get($gutter, 'height') math.div(map_get($gutter, 'width'), 2) 0;
+  padding: map.get(variables.$gutter, 'height') math.div(map.get(variables.$gutter, 'width'), 2) 0;
 
-  @include variant('no-gutters') {
+  @include bem.variant('no-gutters') {
     padding: 0;
   }
 
-  @include variant('align-top') {
+  @include bem.variant('align-top') {
     align-self: flex-start;
   }
 
-  @include variant('align-center') {
+  @include bem.variant('align-center') {
     align-self: center;
   }
 
-  @include variant('align-bottom') {
+  @include bem.variant('align-bottom') {
     align-self: flex-end;
   }
 
-  @include variant('first') {
+  @include bem.variant('first') {
     order: -1;
   }
 
-  @include variant('last') {
+  @include bem.variant('last') {
     order: 1;
   }
 
-  @include variant('reset') {
+  @include bem.variant('reset') {
     order: 0;
   }
 
-  @include variant('flex') {
+  @include bem.variant('flex') {
     display: flex;
   }
 }
 
-@include make-columns($breakpoints, $columns);
+@include col.make-columns(variables.$breakpoints, variables.$columns);

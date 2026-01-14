@@ -1,30 +1,32 @@
+@use "bem";
+
 @use "sass:math";
 
 // Will make the column helpers.
 @mixin make-column-helpers($breakpoint) {
   .col {
-    @include variant($breakpoint + '-no-gutters') {
+    @include bem.variant($breakpoint + '-no-gutters') {
       padding: 0;
     }
-    @include variant($breakpoint + '-align-top') {
+    @include bem.variant($breakpoint + '-align-top') {
       align-self: flex-start;
     }
-    @include variant($breakpoint + '-align-center') {
+    @include bem.variant($breakpoint + '-align-center') {
       align-self: center;
     }
-    @include variant($breakpoint + '-align-bottom') {
+    @include bem.variant($breakpoint + '-align-bottom') {
       align-self: flex-end;
     }
-    @include variant($breakpoint + '-first') {
+    @include bem.variant($breakpoint + '-first') {
       order: -1;
     }
-    @include variant($breakpoint + '-last') {
+    @include bem.variant($breakpoint + '-last') {
       order: 1;
     }
-    @include variant($breakpoint + '-reset') {
+    @include bem.variant($breakpoint + '-reset') {
       order: 0;
     }
-    @include variant($breakpoint + '-flex') {
+    @include bem.variant($breakpoint + '-flex') {
       display: flex;
     }
   }
@@ -33,7 +35,7 @@
 // Will make the default column.
 @mixin make-default-column($breakpoint) {
   .col {
-    @include variant($breakpoint) {
+    @include bem.variant($breakpoint) {
       flex-grow: 1;
       flex-basis: 0;
       max-width: 100%;
@@ -44,7 +46,7 @@
 // Will make a single column
 @mixin make-responsive-column($breakpoint, $column, $width) {
   .col {
-    @include variant($breakpoint + '-' + $column) {
+    @include bem.variant($breakpoint + '-' + $column) {
       flex: 0 0 ($width);
       max-width: ($width);
     }
@@ -57,7 +59,7 @@
     $width: 0;
 
     @if ($column != 0) {
-      $width: percentage(math.div(1, $columns) * $column);
+      $width: math.percentage(math.div(1, $columns) * $column);
     }
 
     @include make-responsive-column($breakpoint, $column, $width);
@@ -67,7 +69,7 @@
 // Will make a single offset
 @mixin make-offset-column($breakpoint, $column, $margin) {
   .col {
-    @include variant($breakpoint + '-offset-' + $column) {
+    @include bem.variant($breakpoint + '-offset-' + $column) {
       margin-left: ($margin);
     }
   }
@@ -79,7 +81,7 @@
     $offset: 0;
 
     @if ($column != 0) {
-      $offset: percentage(math.div(1, $columns) * $column);
+      $offset: math.percentage(math.div(1, $columns) * $column);
     }
 
     @include make-offset-column($breakpoint, $column, $offset);
