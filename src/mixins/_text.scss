@@ -1,15 +1,17 @@
+@use "bem";
+
 // Will make a single text item.
 @mixin make-single-text($breakpoint) {
   .text {
-    @include variant($breakpoint + '-right') {
+    @include bem.variant($breakpoint + '-right') {
       text-align: right;
     }
 
-    @include variant($breakpoint + '-left') {
+    @include bem.variant($breakpoint + '-left') {
       text-align: left;
     }
 
-    @include variant($breakpoint + '-center') {
+    @include bem.variant($breakpoint + '-center') {
       text-align: center;
     }
   }

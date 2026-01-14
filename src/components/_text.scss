@@ -1,17 +1,21 @@
-@import '../bootstrap.scss';
+@use "../mixins/bem";
+@use "../mixins/text";
+@use "../settings/variables";
+
+@use '../bootstrap.scss';
 
 .text {
-  @include variant('left') {
+  @include bem.variant('left') {
     text-align: left;
   }
 
-  @include variant('right') {
+  @include bem.variant('right') {
     text-align: right;
   }
 
-  @include variant('center') {
+  @include bem.variant('center') {
     text-align: center;
   }
 }
 
-@include make-text($breakpoints);
+@include text.make-text(variables.$breakpoints);

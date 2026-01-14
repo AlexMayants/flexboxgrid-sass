@@ -1,7 +1,9 @@
+@use "bem";
+
 // Will make a single grid.
 @mixin make-grid($breakpoint) {
   .grid {
-    @include variant($breakpoint + '-no-gutters') {
+    @include bem.variant($breakpoint + '-no-gutters') {
       margin: 0;
     }
   }

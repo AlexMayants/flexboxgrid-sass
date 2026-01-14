@@ -1,22 +1,27 @@
+@use "../mixins/bem";
+@use "../mixins/grid";
+@use "../settings/variables";
+
 @use "sass:math";
 
-@import '../bootstrap.scss';
+@use "sass:map";
+@use '../bootstrap.scss';
 
 .grid {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  padding: 0 math.div(map_get($gutter, 'width'), 2);
+  padding: 0 math.div(map.get(variables.$gutter, 'width'), 2);
 
-  @include variant('container') {
+  @include bem.variant('container') {
     margin: 0 auto;
     max-width: 1200px;
     width: 100%;
   }
 
-  @include variant('no-gutters') {
+  @include bem.variant('no-gutters') {
     padding: 0;
   }
 }
 
-@include make-grids($breakpoints);
+@include grid.make-grids(variables.$breakpoints);
